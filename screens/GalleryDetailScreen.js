@@ -5,18 +5,17 @@ import HeaderButton from "../components/HeaderButton";
 import { useSelector } from "react-redux";
 
 import DetailObjectItem from "../components/DetailObjectItem";
-
+// { uri: selectedObject.imageUri }  selectedObject.title
 const GalleryDetail = (props) => {
   const photos = useSelector((state) => state.photos.photos);
   const itemId = props.navigation.getParam("objectId");
   const selectedObject = photos.find((item) => item.id === itemId);
-  console.log(selectedObject.imageUri);
   return (
     <ScrollView>
-      <Image source={{ uri: selectedObject.imageUri }} style={styles.image} />
+      <Image source={null} style={styles.image} />
       <View>
-        <Text>ObjectName: {selectedObject.title}</Text>
-        <Text>Description: {selectedObject.description}</Text>
+        <Text>ObjectName: {null}</Text>
+        <Text>Description: {null}</Text>
         <Text>Platzhalter Location</Text>
         <Text>Platzhalter Price</Text>
       </View>

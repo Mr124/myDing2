@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Colors from "../constants/Colors";
 
 const ObjectItem = (props) => {
   return (
@@ -17,8 +18,8 @@ const ObjectItem = (props) => {
 
 const styles = StyleSheet.create({
   objectItem: {
-    borderBottomColor: "#ccc",
-    borderBottomWidth: 1,
+    borderBottomColor: Colors.secondaryColor,
+    borderBottomWidth: 1.5,
     paddingVertical: 15,
     paddingHorizontal: 30,
     flexDirection: "row",
@@ -29,8 +30,8 @@ const styles = StyleSheet.create({
     height: 70,
     borderRadius: 35,
     backgroundColor: "#ccc",
-    borderColor: "black",
-    borderWidth: 1,
+    borderColor: Colors.secondaryColor,
+    borderWidth: 2,
   },
   container: {
     marginLeft: 25,

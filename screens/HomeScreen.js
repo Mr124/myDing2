@@ -76,25 +76,30 @@ const styles = StyleSheet.create({
   firstField: {
     height: "10%",
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: Colors.firstField,
   },
   secondField: {
     height: "20%",
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: Colors.secondField,
   },
   thirdField: {
     height: "10%",
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: Colors.thirdField,
   },
   fourthField: {
     height: "40%",
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: Colors.fourthField,
   },
   orderField: {
     height: "20%",
+    justifyContent: "center",
     backgroundColor: Colors.orderField,
   },
 });

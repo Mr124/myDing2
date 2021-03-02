@@ -1,9 +1,18 @@
 import React, { useState } from "react";
-import { StyleSheet, TextInput, Text, View, Button } from "react-native";
+import {
+  StyleSheet,
+  TextInput,
+  Text,
+  View,
+  Button,
+  ScrollView,
+  KeyboardAvoidingView,
+} from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { useDispatch } from "react-redux";
 import Camera from "../components/Camera";
 import HeaderButton from "../components/HeaderButton";
+import Colors from "../constants/Colors";
 import * as photosActions from "../store/photo-actions";
 
 const Photo = (props) => {
@@ -48,36 +57,48 @@ const Photo = (props) => {
     console.log("navigate zur Gallery wurde ausgeführt");
   };
   return (
-    <View>
+    <View style={styles.topContainer}>
       <Camera onImageTaken={imageTakenHandler} />
-      <View style={styles.inputContainer}>
-        <Text>Photo Information</Text>
-        <TextInput
-          placeholder={"Object Name"}
-          style={styles.textInput}
-          onChangeText={titleChangeHandler}
-          value={titleValue}
-        />
-        <TextInput
-          placeholder={"Description"}
-          style={styles.textInput}
-          onChangeText={descriptionChangeHandler}
-          value={descriptionValue}
-        />
-        <TextInput
-          placeholder={"Location"}
-          style={styles.textInput}
-          onChangeText={locationChangeHandler}
-          value={locationValue}
-        />
-        <TextInput
-          placeholder={"Price"}
-          style={styles.textInput}
-          onChangeText={priceChangeHandler}
-          value={priceValue}
-        />
-        <Button title="Save Object" onPress={savePhotoHandler} />
-      </View>
+      <ScrollView>
+        <KeyboardAvoidingView style={styles.inputContainer}>
+          <Text style={styles.title}>Photo Information</Text>
+          <View style={styles.form}>
+            <TextInput
+              placeholder={"Object Name"}
+              style={styles.textInput}
+              onChangeText={titleChangeHandler}
+              value={titleValue}
+            />
+          </View>
+          <View style={styles.form}>
+            <TextInput
+              placeholder={"Description"}
+              style={styles.textInput}
+              onChangeText={descriptionChangeHandler}
+              value={descriptionValue}
+            />
+          </View>
+          <View style={styles.form}>
+            <TextInput
+              placeholder={"Location"}
+              style={styles.textInput}
+              onChangeText={locationChangeHandler}
+              value={locationValue}
+            />
+          </View>
+          <View style={styles.form}>
+            <TextInput
+              placeholder={"Price"}
+              style={styles.textInput}
+              onChangeText={priceChangeHandler}
+              value={priceValue}
+            />
+          </View>
+          <View style={styles.button}>
+            <Button title="Save Object" onPress={savePhotoHandler} />
+          </View>
+        </KeyboardAvoidingView>
+      </ScrollView>
     </View>
   );
 };
@@ -96,25 +117,41 @@ Photo.navigationOptions = (navData) => {
         />
       </HeaderButtons>
     ),
-    headerRight: () => (
-      <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        <Item
-          title="Add"
-          iconName="md-add"
-          onPress={() => {
-            navData.navigation.toggleDrawer();
-          }}
-        />
-      </HeaderButtons>
-    ),
   };
 };
 
 const styles = StyleSheet.create({
-  textInput: {},
+  topContainer: {
+    flex: 1,
+    backgroundColor: Colors.secondaryColorTransparent,
+  },
+  form: {
+    backgroundColor: Colors.firstField,
+    width: "50%",
+    height: 40,
+    alignItems: "center",
+    marginBottom: 5,
+  },
+  textInput: {
+    padding: 10,
+    textAlign: "center",
+  },
+  title: {
+    marginTop: 10,
+    fontSize: 20,
+    marginBottom: 10,
+    backgroundColor: Colors.primaryColor,
+    width: "70%",
+    padding: 5,
+    textAlign: "center",
+  },
+  button: {
+    marginBottom: 15,
+  },
   inputContainer: {
     marginTop: 15,
     alignItems: "center",
+    justifyContent: "space-evenly",
   },
 });
 
