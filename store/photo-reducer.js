@@ -10,7 +10,15 @@ export default (state = initialState, action) => {
     case SET_OBJECTS:
       return {
         photos: action.photos.map(
-          (ob) => new PhotoObject(ob.id.toString(), ob.title, ob.imageUri)
+          (ob) =>
+            new PhotoObject(
+              ob.id.toString(),
+              ob.title,
+              ob.imageUri,
+              ob.description,
+              ob.location,
+              ob.price
+            )
         ),
       };
     case ADD_PHOTO:
@@ -18,7 +26,9 @@ export default (state = initialState, action) => {
         action.photoData.id,
         action.photoData.title,
         action.photoData.imageUri,
-        action.photoData.description
+        action.photoData.description,
+        action.photoData.location,
+        action.photoData.price
       );
       console.log("Ich bin das newObject aus photo-reducer.js");
       console.log(newObject);

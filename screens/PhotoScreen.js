@@ -50,7 +50,13 @@ const Photo = (props) => {
 
   const savePhotoHandler = () => {
     dispatch(
-      photosActions.addPhoto(titleValue, selectedImage, descriptionValue)
+      photosActions.addPhoto(
+        titleValue,
+        selectedImage,
+        descriptionValue,
+        locationValue,
+        priceValue
+      )
     );
     console.log("savePhotoHandler wurde ausgeführt");
     props.navigation.navigate("Gallery");

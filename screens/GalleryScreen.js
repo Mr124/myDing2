@@ -28,6 +28,8 @@ const Gallery = (props) => {
             image={itemData.item.imageUri}
             title={itemData.item.title}
             description={itemData.item.description}
+            location={itemData.item.location}
+            price={itemData.item.price}
             onSelect={() =>
               props.navigation.navigate("GalleryDetail", {
                 objectTitle: itemData.item.title,

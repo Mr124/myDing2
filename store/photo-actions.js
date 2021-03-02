@@ -4,7 +4,7 @@ import { insertObject, fetchObjects } from "../helpers/db";
 export const ADD_PHOTO = "ADD_PHOTO";
 export const SET_OBJECTS = "SET_OBJECTS";
 
-export const addPhoto = (title, image, description) => {
+export const addPhoto = (title, image, description, location, price) => {
   return async (dispatch) => {
     const fileName = image.split("/").pop();
     const newPath = FileSystem.documentDirectory + fileName;
@@ -21,9 +21,9 @@ export const addPhoto = (title, image, description) => {
       const dbResult = await insertObject(
         title,
         newPath,
-        "dummyDescription aus photo-actions",
-        "locationTest aus photo-actions",
-        10
+        description,
+        location,
+        price
       );
       console.log("Ich bin das dbResult aus photo-actions.js-->addPhoto");
       console.log(dbResult);
@@ -34,6 +34,8 @@ export const addPhoto = (title, image, description) => {
           title: title,
           imageUri: newPath,
           description: description,
+          location: location,
+          price: price,
         },
       });
       console.log("In photo-actions.js--> addPhoto wurde dispatch ausgeführt");

@@ -8,9 +8,9 @@ const ObjectItem = (props) => {
       <Image style={styles.image} source={{ uri: props.image }} />
       <View style={styles.container}>
         <Text style={styles.title}>{props.title}</Text>
-        <Text>{props.description}</Text>
-        <Text>{props.location}</Text>
-        <Text>{props.price}€</Text>
+        <Text>Description: {props.description}</Text>
+        <Text>Location: {props.location}</Text>
+        <Text>Price: {props.price}€</Text>
       </View>
     </TouchableOpacity>
   );
