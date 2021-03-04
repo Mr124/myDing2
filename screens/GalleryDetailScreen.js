@@ -5,6 +5,7 @@ import HeaderButton from "../components/HeaderButton";
 import { useSelector } from "react-redux";
 
 import DetailObjectItem from "../components/DetailObjectItem";
+import Colors from "../constants/Colors";
 // { uri: selectedObject.imageUri }  selectedObject.title
 const GalleryDetail = (props) => {
   const photos = useSelector((state) => state.photos.photos);
@@ -19,7 +20,9 @@ const GalleryDetail = (props) => {
       <Image source={{ uri: selectedObject.imageUri }} style={styles.image} />
       <View style={styles.list}>
         <Text style={styles.title}>ObjectName</Text>
-        <Text style={styles.text}>{selectedObject.title}</Text>
+        <Text style={[styles.firstField, styles.text]}>
+          {selectedObject.title}
+        </Text>
         <Text style={styles.title}>Description</Text>
         <Text style={styles.text}>{selectedObject.description}</Text>
         <Text style={styles.title}>Location</Text>
@@ -68,15 +71,20 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     borderWidth: 1,
-    width: 150,
+    width: 250,
+    textAlign: "center",
     justifyContent: "center",
     paddingLeft: 5,
     paddingRight: 5,
     borderRadius: 5,
+    backgroundColor: "red",
   },
   image: {
     width: "100%",
     height: 200,
+  },
+  firstField: {
+    backgroundColor: "red",
   },
 });
 
